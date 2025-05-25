@@ -3,22 +3,22 @@ This repo contains config files and playbook which will setup my fedora wsl envi
 
 Steps
 1. Make .dotfiles dir in user home directory
-2. Clone repo into .dotfiles (setup ssh keys before)
-3. Install ansible
+2. Intall ansible and git
+3. Clone repo into .dotfiles (setup ssh keys before)
 4. Run playbook
-5. Setup other stuff
 
 ```
 ❯ cd
 ❯ pwd
 /home/kavindu
 ❯ mkdir .dotfiles
-❯ cd .dotfiles
-❯ git clone git@github.com:Kavindu-Rankothge/dotfiles.git
-❯ sudo dnf install ansible -y
+❯ sudo git dnf install ansible -y
+❯ git clone git@github.com:Kavindu-Rankothge/dotfiles.git /home/kavindu/.dotfiles/ 
 ❯ ansible-playbook bootstrap.yml
 
 ```
+
+Playbook will install ohmyzsh, plugins and use stow
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 

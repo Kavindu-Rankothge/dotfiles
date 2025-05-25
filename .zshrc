@@ -1,4 +1,5 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+cd
 
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -127,14 +128,18 @@ source <(fzf --zsh)
 
 ### my alias ###
 alias vim='nvim'
-alias ll='ls -ltra'
+alias ll='ls -ltr'
 alias inv='nvim $(fzf --preview="bat --color=always {}")'
 alias cat='bat -pp'
+alias mnt="cd /mnt/c/Users/kavindu.rankothge"
+alias notes="cd /mnt/c/Users/kavindu.rankothge/Documents/mynotes/kavindu"
+alias syncnotes="/mnt/c/Users/kavindu.rankothge/Documents/mynotes/sync.sh"
 # git
 alias gs='git status --short'
+alias gitup="git push --set-upstream origin"
 alias gd='git diff'
 alias ga='git add'
-alias gc='git commit'
+alias gc='git commit -m'
 alias gp='git push'
 alias gu='git pull'
 alias gl='git log'
@@ -144,3 +149,30 @@ alias gcl='git clone'
 alias gcb='git checkout -b'
 
 ### work alias ###
+alias a1="ssh krankothge@a1c-mgmt01"
+alias mnut="ssh -D 12345 -p 22 krankothge@mnu-jb01.a1ms.cloud "
+alias mnu="ssh krankothge@mnu-jb01.a1ms.cloud"
+alias vccct="ssh -D 12345 -p 22 krankothge@vccc-jb01.a1ms.cloud"
+alias vccc="ssh krankothge@vccc-jb01.a1ms.cloud"
+alias lpau="ssh krankothge@lpau-jb01.a1ms.cloud"
+alias lpaut="ssh -D 12345 -p 22 krankothge@lpau-jb01.a1ms.cloud"
+alias tbst="ssh -D 12345 -p 22 krankothge@tbs-jb01.a1ms.cloud"
+alias tbs="ssh krankothge@tbs-jb01.a1ms.cloud"
+alias tomt="ssh -D 12345 -p 22 krankothge@tac-jb01.a1ms.cloud"
+alias tom="ssh krankothge@tac-jb01.a1ms.cloud"
+alias uomt="ssh -D 12345 -p 22 krankothge@uom-jb01.a1ms.cloud"
+alias uom="ssh krankothge@uom-jb01.a1ms.cloud"
+alias mstt="ssh -D 12345 -p 22 krankothge@mst-jb01.a1ms.cloud"
+alias mst="ssh krankothge@mst-jb01.a1ms.cloud"
+alias lnht="ssh -D 12345 -p 22 krankothge@lnh-jb01.a1ms.cloud"
+alias lnh="ssh krankothge@lnh-jb01.a1ms.cloud"
+alias nesat="ssh -D 12345 -p 22 krankothge@nesa-jb01.a1ms.cloud"
+alias nesa="ssh krankothge@nesa-jb01.a1ms.cloud"
+alias bult="ssh -D 12345 -p 22 krankothge@bul-jb01.a1ms.cloud"
+alias bul="ssh krankothge@bul-jb01.a1ms.cloud"
+alias pact="ssh -D 12345 -p 22 krankothge@pac-jb01.a1ms.cloud"
+alias pac="ssh krankothge@pac-jb01.a1ms.cloud"
+alias pegt="ssh -D 12345 -p 22 krankothge@peg-jb01.a1ms.cloud"
+alias digt="ssh -D 12345 -p 22 krankothge@dig-jb01.a1ms.cloud"
+alias peg="ssh krankothge@peg-jb01.a1ms.cloud"
+alias dig="ssh krankothge@dig-jb01.a1ms.cloud"

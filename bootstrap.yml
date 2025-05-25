@@ -3,6 +3,8 @@
   become: true
   vars:
     homedir: kavindu
+    user_home: "/home/kavindu"
+    zsh_custom: "/home/kavindu/.oh-my-zsh/custom"
   tasks:
     - name: Update packages
       ansible.builtin.dnf:
@@ -24,3 +26,58 @@
           - stow
           - bat
         state: present
+
+    - name: Remove existing config directories and files
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - "{{ user_home }}/.config"
+        - "{{ user_home }}/.p10k.zsh"
+        - "{{ user_home }}/.oh-my-zsh"
+        - "{{ user_home }}/.zshrc"
+
+    - name: Install Oh My Zsh
+      ansible.builtin.shell: |
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+      args:
+        chdir: "{{ user_home }}"
+        executable: /bin/zsh
+      become_user: "{{ homedir }}"
+
+    - name: Clone zsh-autosuggestions plugin
+      ansible.builtin.git:
+        repo: https://github.com/zsh-users/zsh-autosuggestions
+        dest: "{{ zsh_custom }}/plugins/zsh-autosuggestions"
+        version: master
+        update: yes
+      become_user: "{{ homedir }}"
+
+    - name: Clone zsh-syntax-highlighting plugin
+      ansible.builtin.git:
+        repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+        dest: "{{ zsh_custom }}/plugins/zsh-syntax-highlighting"
+        version: master
+        update: yes
+      become_user: "{{ homedir }}"
+
+    - name: Clone powerlevel10k theme
+      ansible.builtin.git:
+        repo: https://github.com/romkatv/powerlevel10k.git
+        dest: "{{ zsh_custom }}/themes/powerlevel10k"
+        depth: 1
+        update: yes
+      become_user: "{{ homedir }}"
+
+    - name: Set zsh as default shell for user
+      ansible.builtin.user:
+        name: "{{ homedir }}"
+        shell: /bin/zsh
+
+    - name: Remove existing zshrc file
+      ansible.builtin.file:
+        path: "{{ user_home }}/.zshrc"
+        state: absent
+
+    - name: Use stow
+      ansible.builtin.shell: "cd {{ user_home }}/.dotfiles && stow ."
