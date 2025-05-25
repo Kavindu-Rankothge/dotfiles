@@ -25,7 +25,14 @@
           - zoxide
           - stow
           - bat
+          - openssh-server
         state: present
+    
+    - name: Ssh setup
+      ansible.builtin.service:
+        name: sshd
+        state: started
+        enabled: true
 
     - name: Remove existing config directories and files
       ansible.builtin.file:
