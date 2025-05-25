@@ -1,0 +1,26 @@
+- name: Setup software and config
+  hosts: localhost
+  become: true
+  vars:
+    homedir: kavindu
+  tasks:
+    - name: Update packages
+      ansible.builtin.dnf:
+        name: '*'
+        state: latest
+
+    - name: Install software
+      ansible.builtin.dnf:
+        name:
+          - vim
+          - neovim
+          - git
+          - zsh
+          - fastfetch
+          - tmux
+          - curl
+          - fzf
+          - zoxide
+          - stow
+          - bat
+        state: present
