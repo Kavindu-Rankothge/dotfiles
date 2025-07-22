@@ -1,6 +1,6 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 cd
-fastfetch
+fastfetch --logo none
 
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -176,3 +176,4 @@ alias pegt="ssh -D 12345 -p 22 krankothge@peg-jb01.a1ms.cloud"
 alias digt="ssh -D 12345 -p 22 krankothge@dig-jb01.a1ms.cloud"
 alias peg="ssh krankothge@peg-jb01.a1ms.cloud"
 alias dig="ssh krankothge@dig-jb01.a1ms.cloud"
+
