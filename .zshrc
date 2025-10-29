@@ -149,7 +149,7 @@ alias gcl='git clone'
 alias gcb='git checkout -b'
 
 ### work alias ###
-alias a1="ssh krankothge@a1c-mgmt01"
+alias a1="ssh krankothge@a1c-mgmt01.a1ms.cloud"
 alias mnut="ssh -D 12345 -p 22 krankothge@mnu-jb01.a1ms.cloud "
 alias mnu="ssh krankothge@mnu-jb01.a1ms.cloud"
 alias vccct="ssh -D 12345 -p 22 krankothge@vccc-jb01.a1ms.cloud"
