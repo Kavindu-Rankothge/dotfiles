@@ -174,10 +174,16 @@ alias pact="ssh -D 12345 -p 22 krankothge@pac-jb01.a1ms.cloud"
 alias pac="ssh krankothge@pac-jb01.a1ms.cloud"
 alias pegt="ssh -D 12345 -p 22 krankothge@peg-jb01.a1ms.cloud"
 alias digt="ssh -D 12345 -p 22 krankothge@dig-jb01.a1ms.cloud"
+alias hant="ssh -D 12345 -p 22 krankothge@han-jb01.a1ms.cloud"
 alias peg="ssh krankothge@peg-jb01.a1ms.cloud"
 alias dig="ssh krankothge@dig-jb01.a1ms.cloud"
+alias han="ssh krankothge@han-jb01.a1ms.cloud"
 alias hvac="/home/kavindu/scripts/rotate-hvac.sh && source /var/lib/awx/hvac/.hvac && echo done"
 alias pri="/home/kavindu/scripts/pr_int.sh"
 alias prc="/home/kavindu/scripts/pr_cus.sh"
 alias pro="/home/kavindu/scripts/pr_oc.sh"
 alias devops="source /home/kavindu/.devops/bin/activate"
+
+# SSL
+export REQUESTS_CA_BUNDLE=/etc/pki/tls/certs/ca-bundle.crt
+export CURL_CA_BUNDLE=/etc/pki/tls/certs/ca-bundle.crt
