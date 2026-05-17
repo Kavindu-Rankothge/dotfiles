@@ -1,7 +1,4 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-cd
-fastfetch --logo none
-
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -88,6 +85,31 @@ plugins=(
 ) 
 
 source $ZSH/oh-my-zsh.sh
+
+# Light background colors for zsh-syntax-highlighting
+ZSH_HIGHLIGHT_STYLES[default]='fg=black'
+ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red'
+ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=magenta,bold'
+ZSH_HIGHLIGHT_STYLES[command]='fg=blue,bold'
+ZSH_HIGHLIGHT_STYLES[alias]='fg=blue,bold'
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=blue,bold'
+ZSH_HIGHLIGHT_STYLES[function]='fg=blue'
+ZSH_HIGHLIGHT_STYLES[precommand]='fg=blue,underline'
+ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
+ZSH_HIGHLIGHT_STYLES[globbing]='fg=magenta'
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=green'
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=green'
+ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=green'
+ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]='fg=red,bold'
+ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]='fg=red,bold'
+ZSH_HIGHLIGHT_STYLES[assign]='fg=black,bold'
+ZSH_HIGHLIGHT_STYLES[redirection]='fg=magenta'
+ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=magenta'
+ZSH_HIGHLIGHT_STYLES[comment]='fg=black,bold'
+ZSH_HIGHLIGHT_STYLES[arg0]='fg=blue,bold'
+
+# Autosuggestions color (darker for light backgrounds)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
 
 # User configuration
 
@@ -178,12 +200,19 @@ alias hant="ssh -D 12345 -p 22 krankothge@han-jb01.a1ms.cloud"
 alias peg="ssh krankothge@peg-jb01.a1ms.cloud"
 alias dig="ssh krankothge@dig-jb01.a1ms.cloud"
 alias han="ssh krankothge@han-jb01.a1ms.cloud"
-alias hvac="/home/kavindu/scripts/rotate-hvac.sh && source /var/lib/awx/hvac/.hvac && echo done"
-alias pri="/home/kavindu/scripts/pr_int.sh"
-alias prc="/home/kavindu/scripts/pr_cus.sh"
-alias pro="/home/kavindu/scripts/pr_oc.sh"
-alias devops="source /home/kavindu/.devops/bin/activate"
+alias hvac="sudo chmod 777 /var/lib/awx/hvac && /home/krankothge/scripts/rotate-hvac.sh && source /var/lib/awx/hvac/.hvac && echo done"
+alias pri="/home/krankothge/scripts/pr_int.sh"
+alias devops="source /home/krankothge/.devops/bin/activate"
 
 # SSL
 export REQUESTS_CA_BUNDLE=/etc/pki/tls/certs/ca-bundle.crt
 export CURL_CA_BUNDLE=/etc/pki/tls/certs/ca-bundle.crt
+export GEMINI_API_KEY=''
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# Claude Code with Bedrock — added by setup.sh
+source /usr/local/bin/claude-bedrock-init.sh
