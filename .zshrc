@@ -143,8 +143,6 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# zoxide
-eval "$(zoxide init --cmd cd zsh)"
 # fuzzy find
 source <(fzf --zsh)
 
@@ -216,3 +214,10 @@ export NVM_DIR="$HOME/.nvm"
 
 # Claude Code with Bedrock — added by setup.sh
 source /usr/local/bin/claude-bedrock-init.sh
+
+# zoxide — must be initialized last so its chpwd hook is not dropped by a
+# later plugin reassigning chpwd_functions. _ZO_DOCTOR=0 silences the
+# false-positive warning in shells that rewrite chpwd_functions after rc
+# load (e.g. Claude Code's Bash tool tracking cwd).
+export _ZO_DOCTOR=0
+eval "$(zoxide init --cmd cd zsh)"
