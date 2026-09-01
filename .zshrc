@@ -3,6 +3,7 @@
 
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # --- zinit bootstrap
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -73,6 +74,20 @@ nvm() {
 node() { unset -f nvm node npm npx; [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"; node "$@"; }
 npm()  { unset -f nvm node npm npx; [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"; npm "$@"; }
 npx()  { unset -f nvm node npm npx; [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"; npx "$@"; }
+
+# --- history ---
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=50000
+
+
+setopt APPEND_HISTORY        # append instead of overwrite
+setopt INC_APPEND_HISTORY    # write each command as it's run, not just on exit
+setopt SHARE_HISTORY         # share history across all open zsh sessions
+setopt HIST_IGNORE_DUPS      # don't record a line if it's a duplicate of the previous
+setopt HIST_IGNORE_SPACE     # don't record lines starting with a space
+setopt HIST_VERIFY           # show expanded history command before running it
+setopt HIST_EXPIRE_DUPS_FIRST
 
 # Claude Code with Bedrock — added by setup.sh
 source /usr/local/bin/claude-bedrock-init.sh

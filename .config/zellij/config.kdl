@@ -1,16 +1,7 @@
-// ~/.config/zellij/config.kdl
-
 theme "catppuccin-mocha"
 
 mouse_mode true
-copy_on_select true             // highlight-to-copy, same as your Alacritty setup
-scroll_buffer_size 10000        // matches tmux history-limit 10000
+copy_on_select true
+scroll_buffer_size 10000
 
 pane_frames true
-
-default_tab_template {
-    pane size=1 borderless=true {
-        plugin location="https://github.com/ishefi/zellaude/releases/latest/download/zellaude.wasm"
-    }
-    children
-}
